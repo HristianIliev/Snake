@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'tetris'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+//    Core
+    compile("org.springframework.boot:spring-boot-starter-web")
+//    Hibernate
+    compile("org.hibernate:hibernate-core:5.2.14.Final")
+    compile 'mysql:mysql-connector-java:5.1.31'
+//    Thymeleaf
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile 'org.thymeleaf:thymeleaf-spring5:3+'
+//    Security
+    compile("org.springframework.boot:spring-boot-starter-security")
+
+//    Unit Testing
+    testCompile 'junit:junit:4.12'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('com.jayway.jsonpath:json-path')
+    testCompile 'org.mockito:mockito-core:2.7.22'
+}
