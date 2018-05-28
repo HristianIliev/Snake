@@ -3,6 +3,7 @@ package tetris.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import tetris.contracts.IRepository;
 import tetris.contracts.IUsersService;
@@ -13,10 +14,13 @@ import java.util.ArrayList;
 @Service
 public class UsersService implements IUsersService {
   private final IRepository<User> usersRepository;
+  private final PasswordEncoder passwordEncoder;
 
   @Autowired
-  public UsersService(IRepository<User> usersRepository) {
+  public UsersService(IRepository<User> usersRepository,
+                      PasswordEncoder passwordEncoder) {
     this.usersRepository = usersRepository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
@@ -26,6 +30,12 @@ public class UsersService implements IUsersService {
             .filter(u -> u.getUsername().equals(username))
             .findFirst()
             .orElse(null);
+  }
+
+  @Override
+  public void create(User user) {
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+    usersRepository.create(user);
   }
 
   @Override

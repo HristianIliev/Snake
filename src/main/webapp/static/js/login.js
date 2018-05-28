@@ -1,10 +1,3 @@
-// $("#login-button").click(function(event) {
-//   event.preventDefault();
-
-//   $("form").fadeOut(500);
-//   $(".wrapper").addClass("form-success");
-// });
-
 $(function() {
   $(".input input")
     .focus(function() {
@@ -137,6 +130,32 @@ $(function() {
     if ($(".alt-2").hasClass("material-buton")) {
       $(".alt-2").removeClass("material-buton");
       $(".alt-2").addClass("material-button");
+    }
+  });
+
+  $("#reg-button").click(function() {
+    var username = $("#regname").val();
+    var password = $("#regpass").val();
+    var repassword = $("#reregpass").val();
+
+    if (
+      password === repassword &&
+      username.length !== 0 &&
+      password.length !== 0
+    ) {
+      $.ajax({
+        url: "/api/register",
+        method: "POST",
+        data: JSON.stringify({
+          username: username,
+          password: password
+        }),
+        contentType: "application/json",
+        success: function(result) {
+          alert();
+          $(".shape").trigger("click");
+        }
+      });
     }
   });
 });
