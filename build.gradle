@@ -35,8 +35,6 @@ dependencies {
 //    Thymeleaf
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile 'org.thymeleaf:thymeleaf-spring5:3+'
-//    Security
-    compile("org.springframework.boot:spring-boot-starter-security")
 
 //    Unit Testing
     testCompile 'junit:junit:4.12'

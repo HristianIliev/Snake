@@ -19,8 +19,7 @@ public class UsersController {
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public void register(@RequestBody User user){
-    System.out.println("reached");
-    this.usersService.create(user);
+  public boolean register(@RequestBody User user){
+    return this.usersService.create(user);
   }
 }

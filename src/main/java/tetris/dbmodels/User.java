@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class User implements IEntity {
   private int id;
   private String username;
-  private String password;
   private int highScore;
 
   @Column(name = "id")
@@ -37,15 +36,6 @@ public class User implements IEntity {
 
   public void setUsername(String username) {
     this.username = username;
-  }
-
-  @Column(name = "password")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 
   @Column(name = "high_score")
