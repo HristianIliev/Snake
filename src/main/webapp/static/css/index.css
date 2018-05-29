@@ -5,3 +5,70 @@
     padding: 10px;
     z-index: 9999;
 }
+
+.z-index{
+    z-index: 1000;
+}
+
+.buttons-container{
+    z-index: 1000;
+    margin-top: 25px;
+}
+
+.container-list {
+    display: inline-block;
+    width: 300px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    position: relative;
+}
+
+.container-list:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    background-image: linear-gradient(to top, rgba(255,255,255,0), #fff);
+    pointer-events: none;
+}
+
+.container-list:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+    pointer-events: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 140px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 5px;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+li {
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+    border-bottom: none;
+}

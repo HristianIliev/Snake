@@ -3,5 +3,9 @@ package tetris.contracts;
 import tetris.dbmodels.User;
 
 public interface IUsersService{
-  boolean create(User user);
+  User create(User user);
+
+  User getUser(int id);
+
+  User updateHighScore(int id, int highScore);
 }

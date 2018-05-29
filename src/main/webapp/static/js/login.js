@@ -23,7 +23,8 @@ $("#login-button").click(function(event) {
     contentType: "application/json",
     success: function(result) {
       stopLoading();
-      if (result) {
+      if (typeof result.id != 'undefined') {
+        sessionStorage.setItem("userId", result.id);
         $("form").fadeOut(500);
         $(".wrapper").addClass("form-success");
         setTimeout(function() {

@@ -19,14 +19,28 @@ public class UsersService implements IUsersService {
   }
 
   @Override
-  public boolean create(User user) {
+  public User create(User user) {
     if (doesExist(user)) {
-      return false;
+      return null;
     }
 
-    this.usersRepository.create(user);
+    return this.usersRepository.create(user);
+  }
 
-    return true;
+  @Override
+  public User getUser(int id) {
+    return this.usersRepository.getById(id);
+  }
+
+  @Override
+  public User updateHighScore(int id, int highScore) {
+    User user = this.usersRepository.getById(id);
+
+    user.setHighScore(highScore);
+
+    this.usersRepository.update(user);
+
+    return user;
   }
 
   private boolean doesExist(User user) {
