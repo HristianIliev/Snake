@@ -44,6 +44,9 @@ body :-ms-input-placeholder {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
 .wrapper.form-success .container h1 {

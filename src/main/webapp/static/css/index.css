@@ -1,0 +1,7 @@
+.canvas {
+    background-color: black;
+    width: 640px;
+    height: 650px;
+    padding: 10px;
+    z-index: 9999;
+}

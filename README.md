@@ -1,1 +1,1 @@
-This is just a browser tetris game that i am making for fun with Spring_MVC, Hibernate, MySQL, Thymeleaf and Spring-security.
+This is just a browser snake game that i am making for fun with Spring_MVC, Hibernate, MySQL, Thymeleaf and Spring-security. First i started with making tetris but then it turned out as a snake game so dont mind the names.
