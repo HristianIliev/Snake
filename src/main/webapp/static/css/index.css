@@ -16,8 +16,9 @@
 }
 
 .container-list {
+    z-index: 9998;
     display: inline-block;
-    width: 300px;
+    width: 195px;
     border: 1px solid #ccc;
     margin: 20px auto;
     position: relative;
@@ -45,7 +46,8 @@
     pointer-events: none;
 }
 
-ul {
+.leaderboard {
+    background-color: white;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -54,21 +56,25 @@ ul {
     overflow-y: auto;
 }
 
-ul::-webkit-scrollbar {
+.leaderboard::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 5px;
 }
 
-ul::-webkit-scrollbar-thumb {
+.leaderboard::-webkit-scrollbar-thumb {
     background: #ccc;
 }
 
-li {
+.leaderboard li {
     margin: 0;
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
 
-li:last-child {
+.leaderboard li:last-child {
     border-bottom: none;
+}
+
+.canvas-wrapper{
+    width: 750px;
 }

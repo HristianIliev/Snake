@@ -31,7 +31,7 @@ public class UsersService implements IUsersService {
   public User getUser(int id) {
     return this.usersRepository.getById(id);
   }
-
+  
   @Override
   public User updateHighScore(int id, int highScore) {
     User user = this.usersRepository.getById(id);
