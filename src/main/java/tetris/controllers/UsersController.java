@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import tetris.contracts.IUsersService;
 import tetris.dbmodels.User;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class UsersController {
@@ -36,5 +38,10 @@ public class UsersController {
   public void updateHighScore(@RequestParam("id") int id,
                               @RequestParam("highScore") int highScore){
     this.usersService.updateHighScore(id, highScore);
+  }
+
+  @RequestMapping(value = "/leaderboard", method = RequestMethod.GET)
+  public List<User> leaderboard(){
+    return this.usersService.leaderboard();
   }
 }

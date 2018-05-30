@@ -1,5 +1,38 @@
+var shouldShow = true;
+
+function setUpLeaderBoard() {
+  $("#leaderboard").click(function() {
+    if (shouldShow) {
+      $(".canvas-wrapper").append(
+        $("<div/>")
+          .addClass("container-list")
+          .append($("<ul/>").addClass("leaderboard"))
+      );
+
+      $.ajax({
+        url: "/api/leaderboard",
+        method: "GET",
+        success: function(result) {
+          shouldShow = false;
+          for (var i = 0; i < result.length; i += 1) {
+            var number = i + 1;
+            $(".leaderboard").append(
+              $("<li/>").text("" + number +  ". " + result[i].username + ": " + result[i].highScore + " points")
+            );
+          }
+        }
+      });
+    } else if (!shouldShow){
+      $(".container-list").remove();
+      shouldShow = true;
+    }
+  });
+}
+
 $(document).ready(function() {
   var userId = sessionStorage.getItem("userId");
+
+  setUpLeaderBoard();
 
   $.ajax({
     url: "/api/user?id=" + userId,
@@ -94,7 +127,8 @@ $(document).ready(function() {
           if (score > highScore) {
             highScore = score;
             $.ajax({
-              url: "/api/updateHighScore?id=" + userId + "&highScore=" + highScore,
+              url:
+                "/api/updateHighScore?id=" + userId + "&highScore=" + highScore,
               method: "GET",
               success: function() {}
             });
@@ -135,7 +169,7 @@ $(document).ready(function() {
         var score_text = "Score: " + score;
         var level_text = "Level: " + level;
         var high_score_text = "High score: " + highScore;
-        ctx.font = '16px serif';
+        ctx.font = "16px serif";
         ctx.fillText(score_text, 5, h - 5);
         ctx.fillText(level_text, 70, h - 5);
         ctx.fillText(high_score_text, 135, h - 5);

@@ -18,13 +18,13 @@
 .container-list {
     z-index: 9998;
     display: inline-block;
-    width: 195px;
+    width: 225px;
+    height: 450px;
     border: 1px solid #ccc;
-    margin: 20px auto;
-    position: relative;
+    position: absolute;
 }
 
-.container-list:before {
+/* .container-list:before {
     content: '';
     display: block;
     position: absolute;
@@ -33,7 +33,7 @@
     height: 40px;
     background-image: linear-gradient(to top, rgba(255,255,255,0), #fff);
     pointer-events: none;
-}
+} */
 
 .container-list:after {
     content: '';
@@ -51,7 +51,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    max-height: 140px;
+    height: 450px;
     overflow: hidden;
     overflow-y: auto;
 }
@@ -76,5 +76,5 @@
 }
 
 .canvas-wrapper{
-    width: 750px;
+    width: 780px;
 }
