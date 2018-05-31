@@ -81,17 +81,20 @@ $(document).ready(function() {
         }
         game_loop = setInterval(paint, 100);
         shouldPause = true;
-
-        $("#pause").click(function() {
-          if (shouldPause) {
-            clearInterval(game_loop);
-            shouldPause = false;
-          } else if (!shouldPause) {
-            game_loop = setInterval(paint, 100);
-            shouldPause = true;
-          }
-        });
       }
+
+      $("#pause").click(function() {
+        if (shouldPause) {
+          clearInterval(game_loop);
+          shouldPause = false;
+          return;
+        } else if (!shouldPause) {
+          game_loop = setInterval(paint, 100);
+          shouldPause = true;
+          return;
+        }
+      });
+
       init();
 
       function create_snake() {
