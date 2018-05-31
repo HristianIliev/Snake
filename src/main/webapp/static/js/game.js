@@ -17,12 +17,20 @@ function setUpLeaderBoard() {
           for (var i = 0; i < result.length; i += 1) {
             var number = i + 1;
             $(".leaderboard").append(
-              $("<li/>").text("" + number +  ". " + result[i].username + ": " + result[i].highScore + " points")
+              $("<li/>").text(
+                "" +
+                  number +
+                  ". " +
+                  result[i].username +
+                  ": " +
+                  result[i].highScore +
+                  " points"
+              )
             );
           }
         }
       });
-    } else if (!shouldShow){
+    } else if (!shouldShow) {
       $(".container-list").remove();
       shouldShow = true;
     }
@@ -38,6 +46,7 @@ $(document).ready(function() {
     url: "/api/user?id=" + userId,
     method: "GET",
     success: function(result) {
+      var shouldPause = true;
       //Canvas stuff
       var canvas = $("#canvas")[0];
       var ctx = canvas.getContext("2d");
@@ -66,8 +75,22 @@ $(document).ready(function() {
 
         //Lets move the snake now using a timer which will trigger the paint function
         //every 60ms
-        if (typeof game_loop != "undefined") clearInterval(game_loop);
+        if (typeof game_loop != "undefined") {
+          shouldPause = false;
+          clearInterval(game_loop);
+        }
         game_loop = setInterval(paint, 100);
+        shouldPause = true;
+
+        $("#pause").click(function() {
+          if (shouldPause) {
+            clearInterval(game_loop);
+            shouldPause = false;
+          } else if (!shouldPause) {
+            game_loop = setInterval(paint, 100);
+            shouldPause = true;
+          }
+        });
       }
       init();
 
