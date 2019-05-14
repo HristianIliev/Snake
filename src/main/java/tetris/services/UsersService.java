@@ -48,9 +48,9 @@ public class UsersService implements IUsersService {
   public List<User> leaderboard() {
     return this.usersRepository.getAll().stream()
             .sorted((o1, o2) -> {
-              if(o1.getHighScore() < o2.getHighScore()){
+              if (o1.getHighScore() < o2.getHighScore()) {
                 return 1;
-              } else if (o1.getHighScore() == o2.getHighScore()){
+              } else if (o1.getHighScore() == o2.getHighScore()) {
                 return 0;
               }
 

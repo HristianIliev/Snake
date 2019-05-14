@@ -1,7 +1,3 @@
-$(document).ready(function() {
-  $(".animsition").animsition();
-});
-
 $("#login-button").click(function(event) {
   event.preventDefault();
 
@@ -28,7 +24,7 @@ $("#login-button").click(function(event) {
         $("form").fadeOut(500);
         $(".wrapper").addClass("form-success");
         setTimeout(function() {
-          $(".animsition-link").trigger("click");
+          location.replace("/home");
         }, 1000);
       } else {
         iziToast.error({
